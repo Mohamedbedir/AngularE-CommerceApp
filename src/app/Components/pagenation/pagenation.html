@@ -1,0 +1,24 @@
+<nav aria-label="Products pagination mt-10">
+	<ul class="pagination justify-content-center mt-4">
+		<li class="page-item" [class.disabled]="pageIndex === 1 || pageCount === 0">
+			<button class="page-link" type="button" (click)="changePage(pageIndex - 1)" [disabled]="pageIndex === 1 || pageCount === 0">
+				Previous
+			</button>
+		</li>
+
+		@for (page of pages; track page) {
+		<li class="page-item" [class.active]="page === pageIndex">
+			<button class="page-link" type="button" (click)="changePage(page)">
+				{{ page }}
+			</button>
+		</li>
+		}
+
+		<li class="page-item" [class.disabled]="pageCount === 0 || pageIndex === pageCount">
+			<button class="page-link" type="button" (click)="changePage(pageIndex + 1)"
+			[disabled]="pageCount === 0 || pageIndex === pageCount">
+				Next
+			</button>
+		</li>
+	</ul>
+</nav>

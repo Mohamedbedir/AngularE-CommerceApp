@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 sticky-top">
+
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold fs-4 text-uppercase" routerLink="">
+            MyStore
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <!-- Links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-lg-2">
+
+                <li class="nav-item">
+
+                    <a class="nav-link active px-3 py-2 rounded-3" routerLink="" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3 py-2 rounded-3" routerLink="products" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">
+
+                        Products
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3 py-2 rounded-3" routerLink="categories" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">
+
+                        Categories
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3 py-2 rounded-3" routerLink="brands" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">
+
+                        Brands
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3 py-2 rounded-3" routerLink="deliverymethods" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">
+
+                        DeliveryMethods
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- Authentication -->
+            <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+
+                @if (!isAuthenticated()) {
+                    <a class="btn btn-outline-light px-4" routerLink="/auth/login">
+
+                        Login
+
+                    </a>
+
+                    <a class="btn btn-primary px-4" routerLink="/auth/register">
+
+                        Register
+
+                    </a>
+                } @else {
+                    <span class="text-light px-2">{{ userDisplayName }}</span>
+
+                    <button type="button" class="btn btn-outline-light px-4" (click)="logout()">
+                        Logout
+                    </button>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>

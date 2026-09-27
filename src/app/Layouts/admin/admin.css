@@ -1,0 +1,30 @@
+.admin-layout {
+  min-height: 100vh;
+
+  background: #14141f;
+}
+
+
+/* NORMAL */
+
+.admin-main {
+
+  min-height: 100vh;
+
+  margin-left: 240px;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  transition: margin-left 0.3s ease;
+}
+
+
+/* COLLAPSED */
+
+.admin-main.collapsed {
+
+  margin-left: 70px;
+
+}

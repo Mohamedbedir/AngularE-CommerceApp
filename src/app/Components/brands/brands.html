@@ -1,0 +1,41 @@
+<div class="container my-5">
+    <div class="row align-items-center justify-content-between mb-4">
+        <div class="col-12 col-lg-8">
+            <h3 class="fw-bold mb-1"> Brands </h3>
+            <p class="text-secondary mb-0"> Explore our available brands </p>
+        </div>
+
+        <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+
+            <app-sort (SortEvent)="sorting($event)">
+
+                <option value="NameAsc">
+                    Name: A - Z
+                </option>
+
+
+            </app-sort>
+
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+        @for (brand of brands(); track brand.id)
+        {
+        <div class="col">
+            <div class="card h-100 border-0" appShadow>
+                <div class="card-body text-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 d-inline-flex mb-3"> <i
+                            class="bi bi-award fs-4"></i> </div>
+                    <h5 class="fw-semibold mb-0"> {{ brand.name }} </h5>
+                </div>
+            </div>
+        </div>
+        }
+        @empty
+        {
+            <div class="col-12">
+                <div class="alert alert-secondary text-center"> No brands found. </div>
+            </div>
+        }
+    </div>
+</div>

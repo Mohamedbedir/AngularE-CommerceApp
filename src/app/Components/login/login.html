@@ -1,0 +1,114 @@
+<div class="min-vh-100 d-flex justify-content-center align-items-center bg-light">
+
+    <div class="card border-0 shadow" style="max-width: 420px; width: 100%;">
+
+        <div class="card-body p-4 p-md-5">
+
+            <!-- Header -->
+            <div class="text-center mb-4">
+
+                <h3 class="fw-bold mb-2">
+                    Login
+                </h3>
+
+                <p class="text-secondary mb-0">
+                    Login to your account
+                </p>
+
+            </div>
+
+
+            <!-- Login Form -->
+            <form #loginform="ngForm" (ngSubmit)="Submit(loginform)">
+
+                <!-- Email -->
+                <div class="mb-3">
+
+                    <label for="email" class="form-label fw-semibold">
+                        Email
+                    </label>
+
+                    <input type="email" #email="ngModel" [(ngModel)]="user.email" name="email" id="email" required email
+                        [class.is-invalid]="email.invalid && email.touched" class="form-control"
+                        placeholder="Enter your email">
+                    @if (email.invalid && (email.dirty || email.touched)) {
+                    <div>
+                        @if (email.hasError('required')) {
+                        <small class="text-danger">Email is required</small>
+                        }
+                        @if (email.hasError('email')) {
+                        <small class="text-danger">Email is invalid</small>
+                        }
+                    </div>
+                    }
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="mb-4">
+
+                    <label for="password" class="form-label fw-semibold">
+                        Password
+                    </label>
+
+                    <input required minlength="8" maxlength="14" type="password" #password="ngModel"
+                        [(ngModel)]="user.password" name="password" id="password"
+                        [class.is-invalid]="password.invalid && password.touched" class="form-control"
+                        placeholder="Enter your password">
+
+                    @if (password.invalid && (password.dirty || password.touched)) {
+                    <div>
+                        @if (password.hasError('required')) {
+                        <small class="text-danger">Password is required</small>
+                        }
+                        @if (password.hasError('minlength')) {
+                        <small class="text-danger">minlength is 8 Char</small>
+                        }
+                        @if (password.hasError('maxlength')) {
+                        <small class="text-danger">Maxlength is 14 Char</small>
+                        }
+                    </div>
+                    }
+
+                </div>
+
+
+                <!-- Submit -->
+                <div class="d-grid">
+
+                    <button type="submit" [disabled]="loginform.invalid || isSubmitting" class="btn btn-primary py-2 fw-semibold">
+
+                        @if (isSubmitting) {
+                            Login To account...
+                        } @else {
+                            Login
+                        }
+
+                    </button>
+
+                </div>
+
+
+                <!-- Register Link -->
+                <div class="text-center mt-4">
+
+                    <span class="text-secondary">
+                        Don't have an account?
+                    </span>
+
+                    <a routerLink="/auth/register" class="text-primary fw-semibold text-decoration-none ms-1">
+
+                        Register
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

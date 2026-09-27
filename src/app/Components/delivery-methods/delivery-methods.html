@@ -1,0 +1,98 @@
+<div class="container my-5">
+
+    <!-- Header -->
+    <div class="mb-4">
+        <h3 class="fw-bold mb-1">
+            Delivery Methods
+        </h3>
+
+        <p class="text-secondary mb-0">
+            Choose your preferred delivery method
+        </p>
+    </div>
+
+    <!-- Delivery Methods -->
+    <div class="row g-3">
+
+        @for (method of deliverymethods(); track method.id) {
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card delivery-card h-100 border-0" appShadow>
+
+                <div class="card-body">
+
+                    <!-- Header -->
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+
+                        <div class="delivery-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+
+                        <span class="badge bg-primary bg-opacity-10 text-primary">
+                            {{ method.shortName }}
+                        </span>
+
+                    </div>
+
+                    <!-- Name / Description -->
+                    <h5 class="fw-semibold mb-2">
+                        {{ method.shortName }}
+                    </h5>
+
+                    <p class="text-secondary mb-4">
+                        {{ method.description }}
+                    </p>
+
+                    <!-- Delivery Info -->
+                    <div class="delivery-info">
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-secondary">
+                                Delivery time
+                            </span>
+
+                            <strong>
+                                {{ method.deliveryTime }}
+                            </strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">
+                                Delivery cost
+                            </span>
+
+                            <strong class="text-primary">
+                                {{ method.cost | currency:'USD':'symbol':'1.0-0' }}
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <!-- Select Button <button type="button" class="btn btn-outline-primary w-100 mt-4">
+                        <i class="bi bi-check2-circle me-2"></i>
+                        Select Delivery
+                    </button> -->
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+        @empty {
+
+        <div class="col-12">
+            <div class="alert alert-secondary text-center">
+                No delivery methods available.
+            </div>
+        </div>
+
+        }
+
+    </div>
+
+</div>

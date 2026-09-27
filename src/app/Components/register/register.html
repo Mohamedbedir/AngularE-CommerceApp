@@ -1,0 +1,192 @@
+<div class="min-vh-100 d-flex justify-content-center align-items-center bg-light">
+
+    <div class="card border-0 shadow" style="max-width: 460px; width: 100%;">
+
+        <div class="card-body p-4 p-md-5">
+
+            <!-- Header -->
+            <div class="text-center mb-4">
+
+                <h3 class="fw-bold mb-2">
+                    Create Account
+                </h3>
+
+                <p class="text-secondary mb-0">
+                    Create your account to get started
+                </p>
+
+            </div>
+
+
+            <!-- Register Form -->
+            <form [formGroup]="registerform" (ngSubmit)="OnSubmit()">
+
+                <!-- Display Name -->
+                <div class="mb-3">
+
+                    <label for="displayName" class="form-label fw-semibold">
+                        Display Name
+                    </label>
+
+                    <input
+                        formControlName="displayName"
+                        [class.is-invalid]="displayName?.invalid && displayName.touched"
+                        [class.is-valid]="displayName?.valid && displayName.touched"
+                        type="text"
+                        id="displayName"
+                        class="form-control"
+                        placeholder="Enter your display name">
+
+                    @if ((displayName?.touched || displayName?.dirty) && displayName?.errors; as errors) {
+                        <div class="invalid-feedback d-block">
+                            @if (errors['required']) {
+                                <span>Display name is required.</span>
+                            }
+                            @if (errors['minlength']) {
+                                <span>Display name must be at least 5 characters.</span>
+                            }
+                            @if (errors['maxlength']) {
+                                <span>Display name must not exceed 15 characters.</span>
+                            }
+                        </div>
+                    }
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="mb-3">
+
+                    <label for="email" class="form-label fw-semibold">
+                        Email
+                    </label>
+
+                    <input
+                        formControlName="email"
+                        [class.is-invalid]="email?.invalid && email.touched"
+                        [class.is-valid]="email?.valid && email.touched"
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="Enter your email">
+
+                    @if ((email?.touched || email?.dirty) && email?.errors; as errors) {
+                        <div class="invalid-feedback d-block">
+                            @if (errors['required']) {
+                                <span>Email is required.</span>
+                            }
+                            @if (errors['email']) {
+                                <span>Enter a valid email address.</span>
+                            }
+                        </div>
+                    }
+
+                </div>
+
+
+                <!-- Phone Number -->
+                <div class="mb-3">
+
+                    <label for="phoneNumber" class="form-label fw-semibold">
+                        Phone Number
+                    </label>
+
+                    <input
+                        formControlName="phoneNumber"
+                        [class.is-invalid]="phoneNumber?.invalid && phoneNumber.touched"
+                        [class.is-valid]="phoneNumber?.valid && phoneNumber.touched"
+                        type="tel"
+                        id="phoneNumber"
+                        class="form-control"
+                        placeholder="Enter your phone number">
+
+                    @if ((phoneNumber?.touched || phoneNumber?.dirty) && phoneNumber?.errors; as errors) {
+                        <div class="invalid-feedback d-block">
+                            @if (errors['required']) {
+                                <span>Phone number is required.</span>
+                            }
+                            @if (errors['pattern']) {
+                                <span>Enter a valid Egyptian phone number.</span>
+                            }
+                        </div>
+                    }
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="mb-4">
+
+                    <label for="password" class="form-label fw-semibold">
+                        Password
+                    </label>
+
+                    <input
+                        formControlName="password"
+                        [class.is-invalid]="password?.invalid && password.touched"
+                        [class.is-valid]="password?.valid && password.touched"
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Enter your password">
+
+                    @if ((password?.touched || password?.dirty) &&  password?.errors; as errors) {
+                        <div class="invalid-feedback d-block">
+                            @if (errors['required']) {
+                                <span>Password is required.</span>
+                            }
+                            @if (errors['minlength']) {
+                                <span>Password must be at least 5 characters.</span>
+                            }
+                            @if (errors['pattern']) {
+                                <span>Password must contain uppercase, lowercase, number, and special character.</span>
+                            }
+                        </div>
+                    }
+
+                </div>
+
+
+                <!-- Submit -->
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        [disabled]="registerform.invalid || isSubmitting"
+                        class="btn btn-primary py-2 fw-semibold">
+
+                        @if (isSubmitting) {
+                            Creating account...
+                        } @else {
+                            Register
+                        }
+
+                    </button>
+
+                </div>
+
+
+                <!-- Login Link -->
+                <div class="text-center mt-4">
+
+                    <span class="text-secondary">
+                        Already have an account?
+                    </span>
+
+                    <a
+                        routerLink="/auth/login"
+                        class="text-primary fw-semibold text-decoration-none ms-1">
+
+                        Login
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

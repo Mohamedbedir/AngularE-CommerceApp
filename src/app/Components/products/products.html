@@ -1,0 +1,92 @@
+<div class="container my-5">
+    <!-- Header -->
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+
+        
+
+    <div class="mb-4 flex-grow-1">
+        <h3 class="fw-bold mb-1">
+            Products
+        </h3>
+
+          <p class="text-secondary mb-0">
+           اختار المنتج اللى عاوزه
+        </p>
+    </div>
+
+    <h5 style="background-color: #0b5ed7; color: white; padding: 5px 10px; border-radius: 5px;">
+        {{ products().length }} / {{ count }}
+    </h5>
+
+    </div>
+
+
+    <!-- Search & Sort -->
+    <div class="row g-3 mb-3">
+
+        <!-- Search -->
+        <div class="col-12 col-lg-8">
+
+            <app-search (searchEvent)="Searching($event)"></app-search>
+
+        </div>
+
+
+        <!-- Sort -->
+        <div class="col-12 col-lg-4">
+
+            <app-sort (SortEvent)="sorting($event)">
+                <option value="PriceAsc">
+                    Price: Low to High
+                </option>
+
+                <option value="PriceDesc">
+                    Price: High to Low
+                </option>
+
+                <option value="NameAsc">
+                    Name: A - Z
+                </option>
+
+                <option value="NameDesc">
+                    Name: Z - A
+                </option>
+            </app-sort>
+
+        </div>
+
+        
+
+    </div>
+
+
+    <!-- Filters -->
+    <div class="mb-4">
+
+        <app-filter (brandEvent)="filteringBrand($event)" (categoryEvent)="filteringCategory($event)"></app-filter>
+
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+
+        @for (product of products(); track product.id)
+        {
+        <div class="col">
+            <app-card [product]="product" (stringEvent)="receve($event)"></app-card>
+        </div>
+
+
+
+
+        }@empty {
+        <div class="text-center col-12">
+            <div class="alert alert-secondary text-center ">
+                No Products available.
+            </div>
+        </div>
+        }
+    </div>
+
+    <app-pagenation [pageIndex]="pageIndex" [pageSize]="pageSize" [count]="count"
+        (pageChange)="changePage($event)"></app-pagenation>
+</div>

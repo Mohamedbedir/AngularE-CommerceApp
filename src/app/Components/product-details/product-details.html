@@ -1,0 +1,141 @@
+<div class="container py-5">
+
+    @if (product(); as currentProduct) {
+
+    <div class="row g-5 align-items-center">
+
+        <!-- Product Image -->
+        <div class="col-12 col-md-6">
+
+            <div class="product-image-container" appShadow>
+                <img [src]="currentProduct.pictureURL || fallbackImage" (error)="useFallback($event)"
+                    [alt]="currentProduct.name" class="img-fluid product-image">
+            </div>
+
+        </div>
+
+        <!-- Product Information -->
+        <div class="col-12 col-md-6">
+
+            <!-- Category 
+            <span class="badge bg-primary bg-opacity-10 text-primary mb-3">
+                {{ currentProduct.category }}
+            </span>
+            -->
+
+            <!-- Product Name -->
+            <h1 class="fw-bold mb-3">
+                {{ currentProduct.name }}
+            </h1>
+
+            <!-- Brand -->
+            <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-award text-primary"></i>
+
+                <span class="text-secondary">
+                    Brand:
+                </span>
+
+                <strong>
+                    {{ currentProduct.brand }}
+                </strong>
+            </div>
+
+            <!-- Price -->
+            <h2 class="text-primary fw-bold mb-4">
+                {{ currentProduct.price | currency:'USD':'symbol':'1.0-0' }}
+            </h2>
+
+            <!-- Description -->
+            <div class="mb-4">
+
+                <h5 class="fw-semibold mb-2">
+                    Description
+                </h5>
+
+                <p class="text-secondary lh-lg">
+                    {{ currentProduct.description }}
+                </p>
+
+            </div>
+
+            <!-- Product Info -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-6">
+
+                    <div class="info-box">
+                        <small class="text-secondary d-block">
+                            Category
+                        </small>
+
+                        <strong>
+                            {{ currentProduct.category }}
+                        </strong>
+                    </div>
+
+                </div>
+                <!--     <div class="col-6">
+
+                    <div class="info-box">
+                        <small class="text-secondary d-block">
+                            Brand
+                        </small>
+
+                        <strong>
+                            {{ currentProduct.brand }}
+                        </strong>
+                    </div>
+
+                </div>
+                -->
+
+
+            </div>
+
+            <!-- Actions -->
+            <div class="d-flex gap-5">
+
+                <button type="button" class="btn btn-outline-secondary px-4" (click)="navigate()">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    Back
+                </button>
+
+                <button type="button" class="btn btn-primary px-4">
+                    <i class="bi bi-cart-plus me-2"></i>
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    }
+
+    @else {
+
+    <div class="text-center py-5">
+
+        <div class="mb-3">
+            <i class="bi bi-box-seam display-4 text-secondary"></i>
+        </div>
+
+        <h4>
+            Product not found
+        </h4>
+
+        <p class="text-secondary">
+            The product you're looking for doesn't exist.
+        </p>
+
+        <a routerLink="/products" class="btn btn-primary">
+            Back to Products
+        </a>
+
+    </div>
+
+    }
+
+</div>

@@ -1,0 +1,16 @@
+<div class="admin-layout">
+
+  <app-sidebar
+    (sidebarToggle)="onSidebarToggle($event)">
+  </app-sidebar>
+
+
+  <main
+    class="admin-main"
+    [class.collapsed]="isSidebarCollapsed">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

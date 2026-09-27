@@ -1,0 +1,118 @@
+```html
+<aside
+  class="sidebar"
+  [class.collapsed]="isCollapsed"
+>
+
+  <!-- HEADER -->
+  <div class="sidebar-header">
+
+    @if (!isCollapsed) {
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          <i class="bi bi-lightning-charge-fill"></i>
+        </div>
+
+        <span>
+          Admin Panel
+        </span>
+
+      </div>
+
+    }
+
+
+    <button
+      type="button"
+      class="collapse-btn"
+      (click)="toggleSidebar()"
+    >
+
+      <i
+        class="bi"
+        [class.bi-chevron-left]="!isCollapsed"
+        [class.bi-chevron-right]="isCollapsed">
+      </i>
+
+    </button>
+
+  </div>
+
+
+  <!-- SECTION -->
+  @if (!isCollapsed) {
+
+    <div class="section-title">
+      Manage listings
+    </div>
+
+  }
+
+
+  <!-- MENU -->
+  <nav class="menu">
+
+    @for (item of menuItems; track item.route) {
+
+      <a
+        class="menu-item"
+
+        [routerLink]="item.route"
+
+        routerLinkActive="active"
+
+        [routerLinkActiveOptions]="{
+          exact: item.route === '/admin'
+        }"
+
+        [attr.title]="isCollapsed ? item.title : null"
+      >
+
+        <i
+          class="bi"
+          [class]="item.icon">
+        </i>
+
+
+        @if (!isCollapsed) {
+
+          <span>
+            {{ item.title }}
+          </span>
+
+        }
+
+      </a>
+
+    }
+
+  </nav>
+
+
+  <!-- BOTTOM -->
+  <div class="sidebar-bottom">
+
+    <a
+      routerLink="/admin/settings"
+      class="menu-item"
+      [attr.title]="isCollapsed ? 'Settings' : null"
+    >
+
+      <i class="bi bi-gear"></i>
+
+      @if (!isCollapsed) {
+
+        <span>
+          Settings
+        </span>
+
+      }
+
+    </a>
+
+  </div>
+
+</aside>
+```

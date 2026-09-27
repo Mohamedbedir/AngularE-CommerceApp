@@ -1,0 +1,47 @@
+
+<div class="error-page">
+
+  <div class="error-content">
+
+    <div class="error-icon">
+      <i class="bi bi-exclamation-triangle"></i>
+    </div>
+
+    <span class="error-code">
+      404
+    </span>
+
+    <h1>
+      Page not found
+    </h1>
+
+    <p>
+      The page you're looking for doesn't exist
+      or may have been moved.
+    </p>
+
+    <div class="error-actions">
+
+     <!--
+       <a
+        routerLink="/admin"
+        class="btn-primary"
+      >
+        <i class="bi bi-grid"></i>
+        Go to Dashboard
+      </a>-->
+
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="goBack()"
+      >
+        <i class="bi bi-arrow-left"></i>
+        Go Back
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body">
+
+        <div class="row g-3">
+
+            <!-- Brand -->
+            <div class="col-12 col-md-6">
+
+                <label class="form-label fw-semibold">
+                    Brand
+                </label>
+
+                <select class="form-select" [(ngModel)]="brand" (change)="sendBrand()">
+
+                    <option value="">
+                        All Brands
+                    </option>
+
+                    @for (item of brands(); track item.id) {
+                    <option [value]="item.id">
+                        {{ item.name }}
+                    </option>
+                    }
+
+                </select>
+
+            </div>
+
+            <!-- Category -->
+            <div class="col-12 col-md-6">
+
+                <label class="form-label fw-semibold">
+                    Category
+                </label>
+
+                 <select class="form-select" [(ngModel)]="category" (change)="sendCategory()">
+
+                    <option value="">
+                        All Categories
+                    </option>
+
+                    @for (item of categoris(); track item.id) {
+                    <option [value]="item.id">
+                        {{ item.name }}
+                    </option>
+                    }
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
