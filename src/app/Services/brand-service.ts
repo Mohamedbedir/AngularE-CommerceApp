@@ -8,11 +8,11 @@ import { IBrand } from '../models/ibrand';
   providedIn: 'root'
 })
 export class BrandService {
-    apiLink=environment.apiLink;
+    apiLink=`${environment.apiLink}/Products`;
     constructor(private http:HttpClient){
     }
 
     GetAllBrands(query:any={}):Observable<IBrand[]>{
-        return this.http.get<IBrand[]>(`${this.apiLink}/Products/Brands`,{params:query})
+        return this.http.get<IBrand[]>(`${this.apiLink}/Brands`,{params:query})
     }
 }
