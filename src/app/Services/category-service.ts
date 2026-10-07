@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 
-    apiLink = environment.apiLink;
+     apiLink=`${environment.apiLink}/Products`;
 
     constructor(private http: HttpClient) {
 
     }
     getAllCategories(query:any={}): Observable<ICategory[]> {
-        return this.http.get<ICategory[]>(`${this.apiLink}/Products/Categories`,{params:query});
+        return this.http.get<ICategory[]>(`${this.apiLink}/Categories`,{params:query});
     }
 }
